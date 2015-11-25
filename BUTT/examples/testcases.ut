@@ -1,0 +1,198 @@
+int8 GA,GB,GC, GArr1[5], GD;
+atomic int32 GAtom;
+int16 GArr2[16];
+
+uint32 
+FactorialRecursive (
+    uint32 f
+    )
+{
+    if(f<=1) {
+        return 1;
+    }
+    
+    return f*FactorialRecursive(f-1);
+}
+
+uint32
+FactorialIterative (
+    uint16 n
+    )
+{
+    uint32 Fact, i;
+    
+    Fact = 1;
+    for(i=n+1; i>=2; i=i-1) {
+        Fact = Fact * i;        
+    }
+    
+    return Fact;
+}
+
+uint32 
+FibonacciRecursive (
+    uint16 n
+    )
+{
+    if(n == 0) {
+        return 0;
+    } else {
+        if(n == 1) {
+            return 1;
+        }
+    }
+    
+    return FibonacciRecursive(n-1) + FibonacciRecursive(n-2);
+}
+
+void
+BubbleSort (
+    void
+    )
+{
+    int8 Array[7], Temp;
+    int8 i, j;
+    int8 ReadV;
+    
+    i = 0;
+    while(i < 7){
+        read(ReadV);
+        Array[i] = ReadV;
+        i = i+1;
+    }
+    
+    i=0;
+    while(i < 6) {
+        j = 0;
+        while(j < (6-i)) {
+            if(Array[j] > Array[j+1]) {
+                Temp = Array[j];
+                Array[j] = Array[j+1];
+                Array[j+1] = Temp;
+            }
+            
+            j = j+1;
+        }
+        
+        i = i+1;
+    }
+    
+    i = 0;
+    while(i < 7){
+        print(Array[i]);
+        i = i+1;
+    }
+}
+
+void
+ArraySearch (
+    void
+    )
+{
+    int8 FindArray[8], FindArraySize;
+    int8 ReadV;
+    int8 FoundIndex;
+    int8 FoundVal;
+    int8 i;
+    
+    FindArraySize = 8;
+    i = 0;
+    while(i < 7){
+        read(ReadV);
+        FindArray[i] = ReadV;
+        i = i + 1;
+    }
+    
+    read(ReadV);
+    i = 0;
+    FoundIndex = 0-1;
+    FoundVal = 0-1;
+    while(i < FindArraySize) {
+        if(FindArray[i] == ReadV) {
+            FoundIndex = i;
+            FoundVal = FindArray[i];
+        }
+        
+        i = i+1;
+    }
+    
+    print(FoundIndex, FoundVal);
+}
+
+void
+MiscTest (
+    void
+    )
+{
+    int8 Int8;
+    int16 Int16;
+    int32 Int32;
+    
+    Int8 = 65535;
+    Int16 = 16777215;
+    Int32 = 2147483647;
+    print(Int8, Int16, Int32);
+}
+
+int8 
+main (
+    int8 p
+    )
+{
+
+    //
+    // Factorial Test
+    //
+
+    print(FactorialRecursive(6));
+    print(FactorialRecursive(7));
+    print(FactorialRecursive(8));
+    
+    print(FactorialIterative(6));
+    print(FactorialIterative(7));
+    print(FactorialIterative(8));
+    
+    //
+    // Fibonacci Test
+    //
+    
+    print(FibonacciRecursive(0));
+    print(FibonacciRecursive(1));
+    print(FibonacciRecursive(2));
+    print(FibonacciRecursive(3));
+    print(FibonacciRecursive(4));
+    print(FibonacciRecursive(5));
+    print(FibonacciRecursive(6));
+    print(FibonacciRecursive(7));
+    print(FibonacciRecursive(8));
+    print(FibonacciRecursive(9));
+    print(FibonacciRecursive(10));
+    
+    //
+    // Bubble Sort
+    //
+    
+    BubbleSort(void);
+    
+    //
+    // Array search
+    //
+    
+    ArraySearch(void);
+    
+    //
+    // Miscellaneous Test
+    //
+    
+    MiscTest(void);
+    
+    //
+    // End in a loop just to show we're still doing stuff
+    //
+    
+    while(1 == 1) {
+        read(GA);
+        print(FibonacciRecursive(GA));
+        print(FactorialRecursive(GA));
+    }
+}

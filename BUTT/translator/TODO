@@ -1,0 +1,43 @@
+The BUTT TODO/Bugs/Limitations list.
+
+################################ Misc Features #################################
+        
+[*] Accessing an array variable without a subscript evaluates to the first
+    element of the array.
+    Example:
+        int8 a,b[60];
+        a = b; is equivalent to a=b[0];
+
+        
+##################################### Bugs #####################################
+
+[*] Evaluating a single variable in a conditional construct evaluates always to
+    true. 
+    Example:
+        if(var)
+        while(var)
+        
+[*] The translator leaks memory like the Titanic let water in.
+
+
+################################## Limitations #################################
+
+[*] Chained assignment of 5 or more subscripted array variables will assert the
+    translator. This is a limitation in the way index registers are used.
+    Example:
+    arr[1] = arr[2] = arr[3] = arr[4] = arr[5];
+    
+[*] Return semantics for functions called as threads are kind of iffy and/or
+    undefined. Iffy is an appropriate description meaning "not well thought out"
+    
+    
+##################################### TODO #####################################
+
+[*] It would be nice if we had a command line parser.
+
+[*] Type-matching for function parameters and function returns.
+
+[*] Void-type function returns.
+
+[*] Conditional and cyclical constructs are currently implemented in
+    translator.y. They should be moved to generator.h/c
